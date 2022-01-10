@@ -40,11 +40,11 @@ get_input_api_info(){
     do
         _read "请输入Cloudflare - Global API Key：" CF_Key
         if [[ $(echo ${#CF_Key}) -ne 37 ]]; then
-            _echo -e "请输入正确合法的Global API Key."
-            continue
+            _echo -r "  key = ${CF_Key}${suffix}"
+            break
         fi
-        _echo -r "  key = ${CF_Key}${suffix}"
-        break
+         _echo -e "请输入正确合法的Global API Key."
+         continue
     done
     if [ ! -e "${CF_EMAIL_APIKEY_STORAGE_DIR}" ]; then
         mkdir -p "${CF_EMAIL_APIKEY_STORAGE_DIR}"
